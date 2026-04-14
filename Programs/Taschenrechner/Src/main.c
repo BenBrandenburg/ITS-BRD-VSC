@@ -15,6 +15,10 @@
 #include "fontsFLASH.h"
 #include "additionalFonts.h"
 #include "error.h"
+#include "token.h"
+#include "scanner.h"
+#include "display.h"
+#include "errorHandling.h"
 
 
 int main(void) {
@@ -27,8 +31,19 @@ int main(void) {
 	lcdPrintlnS("Hallo liebes TI-Labor (c-project)");
 	
 	// Test in Endlosschleife
+
+	initDisplay();
 	while(1) {
-		HAL_Delay(10000);
+		T_token token = nextToken();
+
+    	if (token.tok == NUMBER) {
+        	lcdPrintInt(token.val);
+    	} else 
+		{
+        	printToEchoLine(token.tok);
+    	}
+
+		HAL_Delay(100);
 	}
 }
 

@@ -1,6 +1,6 @@
 CompileFlags:
   CompilationDatabase: >-
-    c:\Users\Ben\Documents\GitHub\ITS-BRD-VSC\Programs\TestStdinoutUSART\out\TestStdinoutUSART\ITSboard\Debug
+    c:\Users\Ben\Documents\GitHub\ITS-BRD-VSC\Programs\TestNewFontAssembler\out\TestNewFontAssembler\ITSboard_Assembly\Debug
   Add:
     - "-D_ILP32=1\r\n"
     - "-D_USE_STATIC_INLINE=1\r\n"
@@ -412,27 +412,28 @@ CompileFlags:
     - "-D__thumb2__=1\r\n"
     - "-D__thumb__=1\r\n"
     - '-D__ARMCOMPILER_LIBCXX=1'
-    - '-IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/Inc'
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/Inc
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../stm32cubef4/Drivers/CMSIS/Include
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../stm32cubef4/Drivers/CMSIS/Include
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../stm32cubef4/Utilities/Fonts
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../DisplayWaveshare/Inc
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../stm32cubef4/Utilities/Fonts
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../ITS_BRD_LIB/Utilities/AddFonts
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../DisplayWaveshare/Inc
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/tmp/TestStdinoutUSART.Debug+ITSboard
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../ITS_BRD_LIB/Utilities/AddFonts
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/RTE/_Debug_ITSboard
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/tmp/TestNewFontAssembler.Debug+ITSboard_Assembly
+    - >-
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/RTE/_Debug_ITSboard_Assembly
     - '-IC:/Users/Ben/AppData/Local/arm/packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include'
     - >-
       -IC:/Users/Ben/AppData/Local/arm/packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     - >-
-      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestStdinoutUSART/../../ITS_BRD_LIB/Inc
+      -IC:/Users/Ben/Documents/GitHub/ITS-BRD-VSC/Programs/TestNewFontAssembler/../../ITS_BRD_LIB/Inc

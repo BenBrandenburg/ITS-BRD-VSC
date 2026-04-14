@@ -1,0 +1,39 @@
+#ifndef ERRORHANDLING.h
+#define ERRORHANDLING.h
+
+#define SUCCESS 0
+#define STACK_EMPTY -1
+#define STACK_OVERFLOW -2
+#define STACK_UNDERFLOW -3
+#define INTEGER_OVERFLOW -4
+#define INTEGER_UNDERFLOW -5
+#define ZERO_DIVISION -6
+
+#define STACK_EMPTY_MSG "Stack is empty!"
+#define STACK_OVERFLOW_MSG "Stackoverflow!"
+#define STACK_UNDERFLOW_MSG "Stackunderflow!"
+#define INTEGER_OVERFLOW_MSG "Integeroverflow!"
+#define INTEGER_UNDERFLOW_MSG "Integerunderflow!"
+#define ZERO_DIVISION_MSG "Zero devision!"
+
+
+/*
+***********************************************************************
+@brief : Check if error happened and resolve it
+
+@param : Errorcode as int
+***********************************************************************
+*/
+void handleError (int* errorCode);
+
+/*
+***********************************************************************
+@brief : Set error state 
+
+@param : Error message
+***********************************************************************
+*/
+void setErrorState (char* errMsg);
+
+#endif
+// EOF

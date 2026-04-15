@@ -1,21 +1,18 @@
 #include "stack.h"
-#define STACK_SIZE 10
-#define VAL_COUNT sizeof(stack)/4
+#include "errorHandling.h"
+#define STACK_SIZE 15
 
-static int[STACK_SIZE] stack = [];
-static int pointer = -1;
+static int stack[STACK_SIZE];
+static int pointer = 0;
 
 int stack_reset() {
-    if (VAL_COUNT == 0) {
-        return STACK_EMPTY;
-    }
-    stack = [];
-    pointer = -1;
+
+    pointer = 0;
     return SUCCESS;
 }
 
-int stack_push(int* val) {
-    if (VAL_COUNT >= STACK_SIZE) {
+int stack_push(int val) {
+    if (pointer >= STACK_SIZE) {
         return STACK_OVERFLOW;
     }
     stack[pointer] = val;
@@ -23,27 +20,34 @@ int stack_push(int* val) {
     return SUCCESS;
 }
 
-int stack_pop(int* errorInt) {
-    if (VAL_COUNT <= 0) {
-        *val = STACK_EMPTY;
-        return -1;
+int stack_pop(int *ptr) {
+    if (pointer <= 0) {
+        return STACK_EMPTY;
     }
 
-    int val = stack[pointer];
+    *ptr = stack[pointer-1];
     pointer--;
-    return val;
+    return SUCCESS;
 }
 
-int stack_peek(int* errorInt) {
-    if (VAL_COUNT == 0) {
-        *val = STACK_EMPTY;
-        return -1;
+int stack_peek(int *ptr) {
+    if (pointer == 0) {
+        return STACK_EMPTY;
     }
-    return stack[pointer];
+    *ptr = stack[pointer-1];
+    return SUCCESS;
 }
 
-int getCount() {
-    return VAL_COUNT;
+int stack_getCount() {
+    return pointer;
+}
+
+int stack_topElemPtr(int **ptr) {
+    if (pointer == 0) {
+         return STACK_EMPTY;
+    }
+    *ptr  = &stack[pointer-1];
+    return SUCCESS;
 }
 
 // EOF

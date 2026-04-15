@@ -15,10 +15,13 @@
 #include "fontsFLASH.h"
 #include "additionalFonts.h"
 #include "error.h"
+
 #include "token.h"
 #include "scanner.h"
 #include "display.h"
 #include "errorHandling.h"
+#include "stack.h"
+#include "computing.h"
 
 
 int main(void) {
@@ -27,21 +30,56 @@ int main(void) {
 	GUI_init(DEFAULT_BRIGHTNESS);   // Initialisierung des LCD Boards mit Touch
 	TP_Init(false);                 // Initialisierung des LCD Boards mit Touch
 
-  // Begruessungstext	
-	lcdPrintlnS("Hallo liebes TI-Labor (c-project)");
-	
-	// Test in Endlosschleife
-
 	initDisplay();
+
+	char stackResetMsg[] = "Stack resetted!\n";
+
 	while(1) {
 		T_token token = nextToken();
+		clearStdout();
 
-    	if (token.tok == NUMBER) {
-        	lcdPrintInt(token.val);
-    	} else 
-		{
-        	printToEchoLine(token.tok);
-    	}
+		switch(token.tok) {
+			case NUMBER: 
+				handleError(stack_push(token.val));
+				break;
+			case PLUS:
+				handleError(addition());
+				break;
+			case MINUS:
+				handleError(substraction());
+				break;
+			case MULT:
+				handleError(multiply()); 
+				break;
+			case DIV:
+				handleError(divide());
+				break;
+			case PRT:
+				handleError(computing_print());
+				break;
+			case SWAP:
+				handleError(swap());
+				break;
+			case PRT_ALL:
+				handleError(computing_printAll());
+				break;
+			case CLEAR:
+				handleError(stack_reset());
+				printStdout(stackResetMsg);
+				break;
+			case DOUBLE:
+				handleError(duplicate());
+				break;
+			case UNEXPECTED:
+				handleError(UNEXPECTED_INPUT);
+				break;
+			case OVERFLOW:
+				handleError(INTEGER_OVERFLOW);
+				break;
+			default:
+			 	handleError(UNEXPECTED_INPUT);
+				break;
+		}
 
 		HAL_Delay(100);
 	}

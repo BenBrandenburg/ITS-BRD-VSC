@@ -1,5 +1,5 @@
-#ifndef STACK.h
-#define STACK.h
+#ifndef STACK_h
+#define STACK_h
 
 /*
 @brief : Clear all values from stack 
@@ -12,43 +12,54 @@ int stack_reset();
 ***********************************************************************
 @brief : Push an integer value on stack
 
-@param : int pointer for failure (-1)
+@param : pushed int
 
-@return pushed int
+@return errorCode
 ***********************************************************************
 */
-int stack_push(int);
+int stack_push(int val);
 
 /*
 ***********************************************************************
 @brief : Pop an integer value of stack
 
-@param : Int pointer for failure (-1 if stack empty)
+@param : popped int pointer
 
-@return Integer from stack
+@return errorCode
 ***********************************************************************
 */
-int stack_pop(int*);
+int stack_pop(int *ptr);
 
 /*
 ***********************************************************************
 @brief : Look at the top val of stack
 
-@param : Int pointer for failure (-1 if stack empty)
+@param : pointer to peeked int
 
-@return value of top of stack
+@return errorCode
 ***********************************************************************
 */
-int stack_peek(int*);
+int stack_peek(int *ptr);
 
 /*
 ***********************************************************************
 @brief : Returns number of stack items
 
-@return number of stack items
+@return errorCode
 ***********************************************************************
 */
-int getCount();
+int stack_getCount();
+
+/*
+***********************************************************************
+@brief : puts address of top element in param
+
+@param : pointer
+
+@return errorCode
+***********************************************************************
+*/
+int stack_topElemPtr(int **ptr);
 
 #endif
 // EOF

@@ -1,6 +1,6 @@
-#ifndef ERRORHANDLING.h
-#define ERRORHANDLING.h
-
+#ifndef ERRORHANDLING_h
+#define ERRORHANDLING_h
+//
 #define SUCCESS 0
 #define STACK_EMPTY -1
 #define STACK_OVERFLOW -2
@@ -8,6 +8,8 @@
 #define INTEGER_OVERFLOW -4
 #define INTEGER_UNDERFLOW -5
 #define ZERO_DIVISION -6
+#define UNEXPECTED_INPUT -7
+#define STACK_COUNT_1 -8
 
 #define STACK_EMPTY_MSG "Stack is empty!"
 #define STACK_OVERFLOW_MSG "Stackoverflow!"
@@ -15,6 +17,8 @@
 #define INTEGER_OVERFLOW_MSG "Integeroverflow!"
 #define INTEGER_UNDERFLOW_MSG "Integerunderflow!"
 #define ZERO_DIVISION_MSG "Zero devision!"
+#define UNEXPECTED_INPUT_MSG "Unexpecet input!"
+#define STACK_COUNT_1_MSG "Stack count is 1!"
 
 
 /*
@@ -24,7 +28,7 @@
 @param : Errorcode as int
 ***********************************************************************
 */
-void handleError (int* errorCode);
+void handleError (int errorCode);
 
 /*
 ***********************************************************************

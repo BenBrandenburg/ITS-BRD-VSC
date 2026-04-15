@@ -3,27 +3,32 @@
 #include "display.h"
 #include "stack.h"
 
-void handleError (int* errorCode) {
+void handleError (int errorCode) {
     switch (errorCode) {
         case SUCCESS: return;
         case STACK_EMPTY: 
-            setErrorState (STACK_EMPTY_MSG);
+            setErrorState(STACK_EMPTY_MSG);
             break;
         case STACK_OVERFLOW: 
-            setErrorState (STACK_OVERFLOW_MSG);
+            setErrorState(STACK_OVERFLOW_MSG);
             break;
         case STACK_UNDERFLOW: 
-            setErrorState (STACK_UNDERFLOW_MSG);
+            setErrorState(STACK_UNDERFLOW_MSG);
             break;
         case INTEGER_OVERFLOW: 
-            setErrorState (INTEGER_OVERFLOW_MSG);
+            setErrorState(INTEGER_OVERFLOW_MSG);
             break;
         case INTEGER_UNDERFLOW: 
-            setErrorState (INTEGER_UNDERFLOW_MSG);
+            setErrorState(INTEGER_UNDERFLOW_MSG);
             break;
         case ZERO_DIVISION: 
-            setErrorState (ZERO_DIVISION_MSG);
+            setErrorState(ZERO_DIVISION_MSG);
             break;
+        case UNEXPECTED_INPUT:
+            setErrorState(UNEXPECTED_INPUT_MSG);
+            break;
+        case STACK_COUNT_1:
+            setErrorState(STACK_COUNT_1_MSG);
         default: break;
     }
     return;
@@ -31,9 +36,9 @@ void handleError (int* errorCode) {
 
 void setErrorState (char* errMsg) {
     setErrMode();
-    printStdOut(errMsg);
-    printStdOut("Press \"C\" to restart!\n");
-    While (nextToken().tok != CLEAR) {
+    printStdout(errMsg);
+    printStdout("\nPress \"C\" to restart!\n");
+    while (nextToken().tok != CLEAR) {
     }
     setNormalMode();
     stack_reset();

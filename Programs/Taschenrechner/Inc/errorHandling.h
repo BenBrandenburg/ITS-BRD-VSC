@@ -10,6 +10,7 @@
 #define ZERO_DIVISION -6
 #define UNEXPECTED_INPUT -7
 #define STACK_COUNT_1 -8
+#define ENTER_NOT_PRESSED -9
 
 #define STACK_EMPTY_MSG "Stack is empty!"
 #define STACK_OVERFLOW_MSG "Stackoverflow!"
@@ -18,7 +19,8 @@
 #define INTEGER_UNDERFLOW_MSG "Integerunderflow!"
 #define ZERO_DIVISION_MSG "Zero devision!"
 #define UNEXPECTED_INPUT_MSG "Unexpecet input!"
-#define STACK_COUNT_1_MSG "Stack count is 1!"
+#define STACK_COUNT_1_MSG "Stack count is 1 or \nless!"
+#define ENTER_NOT_PRESSED_MSG "Only press empty button to enter number!"
 
 
 /*

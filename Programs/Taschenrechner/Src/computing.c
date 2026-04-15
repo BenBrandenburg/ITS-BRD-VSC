@@ -3,9 +3,6 @@
 #include "errorHandling.h"
 #include "display.h"
 
-#define INT_MAX 2147483647
-#define INT_MIN -2147483648
-
 int addition() {
     if (stack_getCount() < 2) {
         return STACK_COUNT_1;
@@ -79,10 +76,19 @@ int multiply() {
         return check2;
     }
 
-    if (x < 0 && y > (INT_MIN/x)) { //check underflow
+    //check underflow
+    if (x < 0 && y > 0 && x < (INT_MIN / y)) {
         return INTEGER_UNDERFLOW;
     }
-    if (x > 0 && y > (INT_MAX/x)) { //check overflow
+    if (x > 0 && y < 0 && y < (INT_MIN / x)) {
+         return INTEGER_UNDERFLOW;
+    }
+
+    //check overflow
+    if (x > 0 && y > 0 && x > (INT_MAX / y)) {
+        return INTEGER_OVERFLOW;
+    }
+    if (x < 0 && y < 0 && x < (INT_MAX / y)) {
         return INTEGER_OVERFLOW;
     }
 
@@ -109,6 +115,10 @@ int divide() {
 
     if (x == 0) {
         return ZERO_DIVISION;
+    }
+
+    if (y <= INT_MIN && x == -1) {
+        return INTEGER_UNDERFLOW;
     }
 
     stack_push(y/x);

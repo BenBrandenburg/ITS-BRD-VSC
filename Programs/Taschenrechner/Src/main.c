@@ -39,7 +39,7 @@ int main(void) {
 		clearStdout();
 
 		switch(token.tok) {
-			case NUMBER: 
+			case NUMBER:
 				handleError(stack_push(token.val));
 				break;
 			case PLUS:

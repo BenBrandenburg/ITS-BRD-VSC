@@ -12,6 +12,12 @@ int stack_reset() {
 }
 
 int stack_push(int val) {
+    if (val > INT_MAX) {
+        return INTEGER_OVERFLOW;
+    }
+    if (val < INT_MIN) {
+        return INTEGER_UNDERFLOW;
+    }
     if (pointer >= STACK_SIZE) {
         return STACK_OVERFLOW;
     }

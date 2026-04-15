@@ -29,12 +29,17 @@ void handleError (int errorCode) {
             break;
         case STACK_COUNT_1:
             setErrorState(STACK_COUNT_1_MSG);
+            break;
+        case ENTER_NOT_PRESSED:
+            setErrorState(ENTER_NOT_PRESSED_MSG);
+            break;
         default: break;
     }
     return;
 }
 
 void setErrorState (char* errMsg) {
+    char stackResetMsg[] = "Stack resetted!\n";
     setErrMode();
     printStdout(errMsg);
     printStdout("\nPress \"C\" to restart!\n");
@@ -42,4 +47,5 @@ void setErrorState (char* errMsg) {
     }
     setNormalMode();
     stack_reset();
+    printStdout(stackResetMsg);
 }

@@ -20,7 +20,7 @@ int addition() {
         return check2;
     }
 
-    if (x > 0 && y > (INT_MAX - x)) {  //check overflow
+    if (x > 0 && y > (INT_MAX - x)) { //check overflow
         return INTEGER_OVERFLOW;
     }
     if (x < 0 && y < (INT_MIN - x)) { //check underflow
@@ -48,10 +48,11 @@ int substraction() {
         return check2;
     }
 
-    if (y < 0 && x > (INT_MAX - y)) { //check underflow
+    if (x > 0 && y < INT_MIN + x) {
         return INTEGER_UNDERFLOW;
     }
-    if (y > 0 && x < (INT_MIN - y)) { //check overflow
+
+    if (x < 0 && y > INT_MAX + x) {
         return INTEGER_OVERFLOW;
     }
 

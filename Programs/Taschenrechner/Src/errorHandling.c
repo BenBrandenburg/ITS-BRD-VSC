@@ -30,9 +30,6 @@ void handleError (int errorCode) {
         case STACK_COUNT_1:
             setErrorState(STACK_COUNT_1_MSG);
             break;
-        case ENTER_NOT_PRESSED:
-            setErrorState(ENTER_NOT_PRESSED_MSG);
-            break;
         default: break;
     }
     return;

@@ -229,10 +229,4 @@ char* int_to_string(int num) {
 
     return str;
 }
-
-char* char_to_string(char c) {
-    static char str[2];
-    str[0] = c;
-    str[1] = '\0';
-    return str;
-}
+// EOF

@@ -182,7 +182,7 @@ int computing_printAll() {
 
     for (int i = 0; i < stack_getCount(); i++) {
         printStdout(int_to_string(*(ptr - i)));
-         printStdout(c);
+        printStdout(c);
     }
 
     printStdout(c);
@@ -193,21 +193,22 @@ char* int_to_string(int num) {
     static char str[12];  // enough for int (max 10 symbols) + sign + '\0'
     int i = 0;
     int isNegative = 0;
+    long n = (long) num;
 
-    if (num == 0) {
+    if (n == 0) {
         str[0] = '0';
         str[1] = '\0';
         return str;
     }
 
-    if (num < 0) {
+    if (n < 0) {
         isNegative = 1;
-        num = -num;
+        n = -n;
     }
 
-    while (num > 0) {   // add symbols to str reverted
-        str[i++] = (num % 10) + '0';    // asccii for 0 + int = assci for int
-        num /= 10;
+    while (n > 0) {   // add symbols to str reverted
+        str[i++] = (n % 10) + '0';    // asccii for 0 + int = assci for int
+        n /= 10;
     }
 
     if (isNegative) {   // add "-" if negative

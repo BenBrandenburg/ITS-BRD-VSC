@@ -83,6 +83,7 @@ int main(void) {
 
 		HAL_Delay(100);
 	}
+	return 0;
 }
 
 // EOF

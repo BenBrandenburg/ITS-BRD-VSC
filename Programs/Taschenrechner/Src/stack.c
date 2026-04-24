@@ -6,7 +6,6 @@ static int stack[STACK_SIZE];
 static int pointer = 0;
 
 int stack_reset() {
-
     pointer = 0;
     return SUCCESS;
 }

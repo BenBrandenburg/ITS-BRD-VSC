@@ -118,8 +118,8 @@ int divide() {
         return ZERO_DIVISION;
     }
 
-    if (y <= INT_MIN && x == -1) {
-        return INTEGER_UNDERFLOW;
+    if (y == INT_MIN && x == -1) {
+        return INTEGER_OVERFLOW;
     }
 
     stack_push(y/x);
@@ -133,11 +133,12 @@ int duplicate() {
     if (check != SUCCESS) {
         return check;
     }
+
     return stack_push(x);
 }
 
 int swap() {
-    if (stack_getCount() < 2) {
+    if (stack_getCount() < 2 && stack_getCount() != 0) {
         return STACK_COUNT_1;
     }
 
@@ -176,7 +177,7 @@ int computing_printAll() {
     int check = stack_topElemPtr(&ptr);
     if (check != SUCCESS) {
         return check;
-    } 
+    }
 
     char c[] = "\n";
 
@@ -207,7 +208,7 @@ char* int_to_string(int num) {
     }
 
     while (n > 0) {   // add symbols to str reverted
-        str[i++] = (n % 10) + '0';    // asccii for 0 + int = assci for int
+        str[i++] = (char) ((n % 10) + '0');    // asccii for 0 + int = assci for int
         n /= 10;
     }
 

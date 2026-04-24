@@ -3,6 +3,15 @@
 #include "display.h"
 #include "stack.h"
 
+#define STACK_EMPTY_MSG "Stack is empty!"
+#define STACK_OVERFLOW_MSG "Stackoverflow!"
+#define STACK_UNDERFLOW_MSG "Stackunderflow!"
+#define INTEGER_OVERFLOW_MSG "Integeroverflow!"
+#define INTEGER_UNDERFLOW_MSG "Integerunderflow!"
+#define ZERO_DIVISION_MSG "Zero devision!"
+#define UNEXPECTED_INPUT_MSG "Unexpecet input!"
+#define STACK_COUNT_1_MSG "Stack count is 1 or \nless!"
+
 void handleError (int errorCode) {
     switch (errorCode) {
         case SUCCESS: return;

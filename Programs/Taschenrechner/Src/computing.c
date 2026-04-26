@@ -194,7 +194,7 @@ char* int_to_string(int num) {
     static char str[12];  // enough for int (max 10 symbols) + sign + '\0'
     int i = 0;
     int isNegative = 0;
-    long n = (long) num;
+    long long n = (long long) num;
 
     if (n == 0) {
         str[0] = '0';

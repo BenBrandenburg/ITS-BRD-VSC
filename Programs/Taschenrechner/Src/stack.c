@@ -27,7 +27,7 @@ int stack_push(int val) {
 
 int stack_pop(int *ptr) {
     if (pointer <= 0) {
-        return STACK_EMPTY;
+        return STACK_UNDERFLOW;
     }
 
     *ptr = stack[pointer-1];

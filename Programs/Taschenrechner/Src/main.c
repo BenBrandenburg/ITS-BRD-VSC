@@ -22,6 +22,7 @@
 #include "errorHandling.h"
 #include "stack.h"
 #include "computing.h"
+#include "tests.h"
 
 
 int main(void) {
@@ -33,6 +34,9 @@ int main(void) {
 	initDisplay();
 
 	char stackResetMsg[] = "Stack resetted!\n";
+
+	testAll();
+
 
 	while(1) {
 		T_token token = nextToken();
@@ -46,7 +50,7 @@ int main(void) {
 				handleError(addition());
 				break;
 			case MINUS:
-				handleError(substraction());
+				handleError(subtraction());
 				break;
 			case MULT:
 				handleError(multiply()); 

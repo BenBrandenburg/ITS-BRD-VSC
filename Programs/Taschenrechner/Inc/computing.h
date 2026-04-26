@@ -8,7 +8,7 @@
  *  @return     errorcode as int (0 is success)
  ****************************************************************************************/
 int addition();
-int substraction();
+int subtraction();
 int multiply();
 int divide();
 

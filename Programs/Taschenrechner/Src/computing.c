@@ -31,7 +31,7 @@ int addition() {
     return SUCCESS;
 }
 
-int substraction() {
+int subtraction() {
     if (stack_getCount() < 2) {
         return STACK_COUNT_1;
     }

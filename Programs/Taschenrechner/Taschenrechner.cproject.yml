@@ -181,6 +181,7 @@ project:
         - file: Inc/errorHandling.h
         - file: Inc/display.h
         - file: Inc/computing.h
+        - file: Inc/tests.h
 
 
     # Benutzerdefinierte Programmdateien
@@ -192,6 +193,7 @@ project:
         - file: Src/computing.c
         - file: Src/stack.c
         - file: Src/errorHandling.c
+        - file: Src/tests.c
 
 
   components:

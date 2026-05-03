@@ -35,7 +35,7 @@ int main(void) {
 
 	char stackResetMsg[] = "Stack resetted!\n";
 
-	testAll();
+	//testAll();
 
 
 	while(1) {

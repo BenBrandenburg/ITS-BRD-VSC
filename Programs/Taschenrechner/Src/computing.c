@@ -4,9 +4,6 @@
 #include "display.h"
 
 int addition() {
-    if (stack_getCount() < 2) {
-        return STACK_COUNT_1;
-    }
 
     int x;
     int y;
@@ -32,10 +29,6 @@ int addition() {
 }
 
 int subtraction() {
-    if (stack_getCount() < 2) {
-        return STACK_COUNT_1;
-    }
-
     int x;
     int y;
 
@@ -60,11 +53,7 @@ int subtraction() {
     return SUCCESS;
 }
 
-int multiply() {
-    if (stack_getCount() < 2) {
-        return STACK_COUNT_1;
-    }
-    
+int multiply() {    
     int x;
     int y;
 
@@ -98,10 +87,6 @@ int multiply() {
 }
 
 int divide() {
-    if (stack_getCount() < 2) {
-        return STACK_COUNT_1;
-    }
-
     int x;
     int y;
 
@@ -138,10 +123,6 @@ int duplicate() {
 }
 
 int swap() {
-    if (stack_getCount() < 2 && stack_getCount() != 0) {
-        return STACK_COUNT_1;
-    }
-
     int x;
     int y;
 
@@ -173,20 +154,21 @@ int computing_print() {
 }
 
 int computing_printAll() {
-    int* ptr;
-    int check = stack_topElemPtr(&ptr);
-    if (check != SUCCESS) {
-        return check;
-    }
-
+    int helperArray[STACK_SIZE];
+    int x;
     char c[] = "\n";
+    int i = 0;
 
-    for (int i = 0; i < stack_getCount(); i++) {
-        printStdout(int_to_string(*(ptr - i)));
+    while (stack_pop(&x) == SUCCESS) {
+        printStdout(int_to_string(x));
         printStdout(c);
+        helperArray[i++] = x;
+     //   i++;
     }
-
-    printStdout(c);
+    while (i > 0) {
+        stack_push(helperArray[--i]);
+    //    i--;
+    }
     return SUCCESS;
 }
 

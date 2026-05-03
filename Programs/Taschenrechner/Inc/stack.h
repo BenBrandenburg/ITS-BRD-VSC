@@ -2,6 +2,7 @@
 #define STACK_h
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
+#define STACK_SIZE 15
 
 /*
 @brief : Clear all values from stack 
@@ -42,26 +43,6 @@ int stack_pop(int *ptr);
 ***********************************************************************
 */
 int stack_peek(int *ptr);
-
-/*
-***********************************************************************
-@brief : Returns number of stack items
-
-@return errorCode
-***********************************************************************
-*/
-int stack_getCount();
-
-/*
-***********************************************************************
-@brief : puts address of top element in param
-
-@param : pointer
-
-@return errorCode
-***********************************************************************
-*/
-int stack_topElemPtr(int **ptr);
 
 #endif
 // EOF

@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"clangd.arguments": [
-			"--compile-commands-dir=c:\\Users\\Ben\\Documents\\GitHub\\ITS-BRD-VSC\\Programs\\Taschenrechner\\out\\Taschenrechner\\ITSboard\\Debug"
+			"--compile-commands-dir=c:\\ITS-BRD-VSC\\Programs\\Taschenrechner\\out\\Taschenrechner\\ITSboard\\Debug"
 		],
 		"debug.hideSlowPreLaunchWarning": true,
 		"debug.showInStatusBar": "never",

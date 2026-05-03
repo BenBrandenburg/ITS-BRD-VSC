@@ -13,7 +13,8 @@ void run();
 
 
 static void changeState();
-
+static void setErrorState();
+static void reset();
 static void countSteps();
 
 #endif 

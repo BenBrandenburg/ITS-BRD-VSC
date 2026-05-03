@@ -4,9 +4,9 @@
 #include <stdbool>
 
 typedef enum {
-    PHASE_A = 0, // 00
-    PHASE_D = 1, // 01
-    PHASE_B = 2, // 10
+    PHASE_A = 0, // 00 
+    PHASE_D = 1, // 01 
+    PHASE_B = 2, // 10 
     PHASE_C = 3  // 11
 } Phase;
 

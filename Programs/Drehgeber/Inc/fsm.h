@@ -16,6 +16,8 @@ static void changeState();
 static void setErrorState();
 static void reset();
 static void countSteps();
+static int changePhaseDiff();
+
 
 #endif 
 // EOF

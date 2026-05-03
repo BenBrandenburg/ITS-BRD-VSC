@@ -1,4 +1,5 @@
 #include "fsm.h"
+#include "display.h"
 #include <stdbool>
 
 static State phaseToState[4][4] = {
@@ -10,6 +11,9 @@ static State phaseToState[4][4] = {
 
 static State state_ = Idle;
 static int counter_ = 0;
+static int phaseCounter = 0;
+static int lastPhaseCounter = 0;
+static int phaseDiffCounter = 0;
 static Phase currentPhase_ = PHASE_A;
 static Phase previousPhase_ = PHASE_A;
 static uint32_t currentTime_ = 0;
@@ -22,11 +26,23 @@ void run() {
 
         changeState();
         countSteps();
+        
+    
 
+    if (0.25 <= getDt(currentTime_, lastTime_)){
+        changePhaseDiff();  
+        double angle = computing_getRotationAngle(counter_);
+        double velocity = computing_getAngleVelocity(phaseDiffCounter,currentTime_ - lastTime_);
+        update_display(angle,velocity);
+        
+
+    }
         // winkelberechnung + geschwindigkeit
 
         if (state_ == Forward) // gpioOutput forward
         if (state_ == Reverse) // gpioOutput reverse
+
+
 
         previousPhase_ = currentPhase_;
         lastTime_ = currentTime_;
@@ -36,6 +52,8 @@ void run() {
 void changeState() {
     state_ = phaseToState[previousPhase_][currentPhase_];
     if (state_ == Error) setErrorState();
+    if (state_ == Forward || state_  == Reverse) ++phaseCounter;
+    
 }
 
 void setErrorState() {
@@ -70,4 +88,12 @@ void countSteps() {
         }
     }
 }
+
+/* 
+berechnet die diefferrenz zwischen dem alten phasencounterr mit dem neuem phasencounter*/
+void changePhaseDiff (){
+    phaseDiffCounter = phaseCounter - lastPhaseCounter;
+    lastPhaseCounter = phaseCounter; 
+}
+
 // EOF

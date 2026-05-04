@@ -3,7 +3,7 @@
 
 
 
-void update_display(double winkel ,double phaseCounter);
+void update_display(double winkel ,double velocity);
 
 
 

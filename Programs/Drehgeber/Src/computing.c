@@ -6,7 +6,7 @@ double computing_getRotationAngle(int counter){
     return angle;
 }
 
-// berechnet die geschbwindigkeit
+// berechnet die winkel geschwindigkeit
 double computing_getAngleVelocity(int diffBetweenPhases, uint32_t Dt ){
     double velocity = ( diffBetweenPhases * 0.3 ) / Dt;
     return velocity;

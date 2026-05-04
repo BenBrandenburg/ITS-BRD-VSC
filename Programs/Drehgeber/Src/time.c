@@ -12,6 +12,6 @@ uint32_t getTime() {
 }
 
 double getDt(uint32_t t2, uint32_t t1) {
-    double dt = (double) ((t2-t1) * TICKS_PER_SEC);
+    double dt = (double) ((t2-t1) / TICKS_PER_SEC);
     return dt < 0.0 ? dt * (-1.0) : dt;
 }

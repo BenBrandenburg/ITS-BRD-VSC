@@ -180,6 +180,12 @@ project:
     - group: Program/User/Src
       files:
         - file: Src/main.c
+        - file: Src/time.c
+        - file: Src/gpioInput.c
+        - file: Src/gpioOutput.c
+        - file: Src/fsm.c
+        - file: Src/display.c
+        - file: Src/computing.c
 
 
   components:

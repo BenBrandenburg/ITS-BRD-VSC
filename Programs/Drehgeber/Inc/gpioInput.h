@@ -1,7 +1,7 @@
 #ifndef GPIOINTPUT_H
 #define GPIOINTPUT_H
 
-#include <stdbool>
+#include <stdbool.h>
 
 typedef enum {
     PHASE_A = 0, // 00 

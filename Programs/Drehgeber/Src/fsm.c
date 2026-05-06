@@ -1,7 +1,12 @@
 #include "fsm.h"
 #include "display.h"
 #include "fsmStates.h"
-#include <stdbool>
+#include "gpioInput.h"
+#include "gpioOutput.h"
+#include "computing.h"
+#include "time.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 static FsmState phaseToState[4][4] = {
     {Idle, Reverse, Forward, Error},
@@ -31,7 +36,7 @@ void run() {
 
 void getInput() {
     currentPhase_ = gpioInput_getPhase();
-    currentTime_ = getTimeStamp();
+    currentTime_ = getTime();
 }
 
 void changeState() {
@@ -48,7 +53,7 @@ void processInput() {
     if (0.25 <= getDt(currentTime_, lastTime_)){
         changePhaseDiff();  
         double angle = computing_getRotationAngle(counter_);
-        double velocity = computing_getAngleVelocity(phaseDiffCounter,currentTime_ - lastTime_);
+        double velocity = computing_getAngleVelocity(phaseDiffCounter_, (currentTime_ - lastTime_ ));
         update_display(angle,velocity);
         lastTime_ = currentTime_;
     }
@@ -60,8 +65,10 @@ void processInput() {
 }
 
 void outPut() {
-    update_display(angle, velocity);
-    update_gpioOutput(counter_, )
+    double x = 0.0;
+    double y = 0.0;
+    update_display(x, y);
+    update_gpioOutput(counter_,state_ );
 }
 
 

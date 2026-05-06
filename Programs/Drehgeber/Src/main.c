@@ -24,7 +24,8 @@ int main(void) {
 	TP_Init(false);                 // Initialisierung des LCD Boards mit Touch
 
   // Begruessungstext	
-	lcdPrintlnS("Hallo liebes TI-Labor (c-project)");
+	lcdPrintlnS("Drehwinkel:\n");
+	lcdPrintlnS("Drehgeschwindigkeit:\n");
 	
 	// Test in Endlosschleife
 	while(1) {

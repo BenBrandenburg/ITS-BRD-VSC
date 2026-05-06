@@ -3,7 +3,7 @@
 
 #include "fsmStates.h"
 
- update_gpioOutput(int counter_, FsmState state);
+ void update_gpioOutput(int counter_, FsmState state);
 
 #endif
 // EOF

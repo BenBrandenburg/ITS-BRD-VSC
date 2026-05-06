@@ -14,7 +14,7 @@ static void outPut();
 static void setErrorState();
 static void reset();
 static void countSteps();
-static int changePhaseDiff();
+static void changePhaseDiff();
 
 #endif 
 // EOF

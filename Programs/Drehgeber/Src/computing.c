@@ -1,5 +1,5 @@
 #include "fsm.h"
-
+#include <stdint.h>
 // berechnet den winkel 
 double computing_getRotationAngle(int counter){
     double angle = counter * 0.3;

@@ -9,3 +9,7 @@ Phase gpioInput_getPhase(void) {
 bool gpioInput_S6Pressed(void) {
     return !(GPIOF->IDR & (1 << 6)); // s6 ist 6tes bit von gpiof
 }
+
+void update_gpioOutput(int counter_, FsmState state) {
+    
+}

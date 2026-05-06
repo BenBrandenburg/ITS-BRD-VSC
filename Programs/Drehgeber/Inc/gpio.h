@@ -2,6 +2,7 @@
 #define GPIOINTPUT_H
 
 #include <stdbool.h>
+#include "fsmStates.h"
 
 typedef enum {
     PHASE_A = 0, // 00 
@@ -13,6 +14,9 @@ typedef enum {
 Phase gpioInput_getPhase(void);
 
 bool gpioInput_S6Pressed(void);
+
+
+void update_gpioOutput(int counter_, FsmState state);
 
 #endif
 // EOF

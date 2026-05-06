@@ -16,6 +16,8 @@
 #include "additionalFonts.h"
 #include "error.h"
 
+#include "fsm.h"
+
 
 int main(void) {
 	initITSboard();    // Initialisierung des ITS Boards
@@ -27,10 +29,7 @@ int main(void) {
 	lcdPrintlnS("Drehwinkel:\n");
 	lcdPrintlnS("Drehgeschwindigkeit:\n");
 	
-	// Test in Endlosschleife
-	while(1) {
-		HAL_Delay(10000);
-	}
+	fsm_run();
 }
 
 // EOF

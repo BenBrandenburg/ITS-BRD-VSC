@@ -10,6 +10,20 @@ bool gpioInput_S6Pressed(void) {
     return !(GPIOF->IDR & (1 << 6)); // s6 ist 6tes bit von gpiof
 }
 
-void update_gpioOutput(int counter_, FsmState state) {
-    
+void gpioOutput_update(int counter, FsmState state) {
+    GPIOD->BSRR = 0; // resette alle leds
+
+    (GPIOD->BSRR & (counter & 63)); // den counter mit 63 verunden, damit nur die ersten 6 bit beachtet werden
+
+    if (state == Forward) {
+        GPIOD->BSRR & (1 << 15); // 16tes bit anschalten 
+    }
+
+    if (state == Reverse) {
+        GPIOD->BSRR & (1 << 14); // 15tes bit anschalten
+    }
+}
+
+void gpioOutput_toggleErrorLed() {
+    GPIOD->BSSR ^ (1 << 13); // 14tes bit togglen
 }

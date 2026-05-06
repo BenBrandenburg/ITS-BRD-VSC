@@ -16,22 +16,27 @@ static FsmState phaseToState[4][4] = {
 };
 
 static FsmState state_ = Idle;
-static int counter_ = 0;
-static int phaseCounter_ = 0;
+static int counter_ = 0; // nur für gpio output, kann negativ sein
+
+static int phaseCounter_ = 0;   // für berechnungen
 static int lastPhaseCounter_ = 0;
 static int phaseDiffCounter_ = 0;
+
 static Phase currentPhase_ = PHASE_A;
 static Phase previousPhase_ = PHASE_A;
+
+static double angle_ = 0.0;
+static double velocity_ = 0.0;
 static uint32_t currentTime_ = 0;
 static uint32_t lastTime_ = 0;
 
-void run() {
+void fsm_run() {
     while(1) {
         getInput(); 
         changeState();
         processInput();
         outPut();
-    } 
+    }
 }
 
 void getInput() {
@@ -52,30 +57,25 @@ void processInput() {
         
     if (0.25 <= getDt(currentTime_, lastTime_)){
         changePhaseDiff();  
-        double angle = computing_getRotationAngle(counter_);
-        double velocity = computing_getAngleVelocity(phaseDiffCounter_, (currentTime_ - lastTime_ ));
+        angle_ = computing_getRotationAngle(counter_);
+        velocity_ = computing_getAngleVelocity(phaseDiffCounter_, (currentTime_ - lastTime_ ));
         update_display(angle,velocity);
         lastTime_ = currentTime_;
     }
-
-        if (state_ == Forward) // gpioOutput forward
-        if (state_ == Reverse) // gpioOutput reverse
-
         previousPhase_ = currentPhase_;
 }
 
 void outPut() {
-    double x = 0.0;
-    double y = 0.0;
-    update_display(x, y);
-    update_gpioOutput(counter_,state_ );
+    update_display(angle_, velocity_);
+    update_gpioOutput(counter_, state_);
 }
 
 
 void setErrorState() {
+    gpioOutput_toggleErrorLed(); // error led an
     while (!gpioInput_S6Pressed()) {
-        // Print error out
     }
+    void gpioOutput_toggleErrorLed(); // error led aus
     reset();
 }
 
@@ -107,8 +107,8 @@ void countSteps() {
     }
 }
 
-/* 
-berechnet die diefferrenz zwischen dem alten phasencounterr mit dem neuem phasencounter*/
+
+// berechnet die differrenz zwischen dem alten phasencounterr mit dem neuem phasencounter
 void changePhaseDiff (){
     phaseDiffCounter_ = phaseCounter_ - lastPhaseCounter_;
     lastPhaseCounter_ = phaseCounter_; 

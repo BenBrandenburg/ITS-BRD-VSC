@@ -24,16 +24,20 @@ static int phaseDiffCounter_ = 0;
 
 static Phase currentPhase_ = PHASE_A;
 static Phase previousPhase_ = PHASE_A;
+static bool s6Pressed_ = false;
 
 static double angle_ = 0.0;
 static double velocity_ = 0.0;
 static uint32_t currentTime_ = 0;
 static uint32_t lastTime_ = 0;
 
+static bool 
+
 void fsm_run() {
     while(1) {
         getInput(); 
         changeState();
+        if (state_ == Error && (s6Pressed_)) reset();
         processInput();
         outPut();
     }
@@ -42,41 +46,35 @@ void fsm_run() {
 void getInput() {
     currentPhase_ = gpioInput_getPhase();
     currentTime_ = getTime();
+    s6Pressed_ = gpioInput_S6Pressed();
 }
 
 void changeState() {
+    if (state_ == Error) return;
     state_ = phaseToState[previousPhase_][currentPhase_];
 }
 
 void processInput() {
-     if (state_ == Error) setErrorState();
+    if (state_ == Error) return;
 
-     if (state_ == Forward || state_  == Reverse) ++phaseCounter_; 
+    if (state_ == Forward || state_  == Reverse) ++phaseCounter_; 
 
         countSteps();
-        
-    if (0.25 <= getDt(currentTime_, lastTime_)){
+    
+    double dt = getDt(currentTime_, lastTime_);
+    if ((0.25 >= dt && currentPhase_ != previousPhase_) || (0.5 >= dt)) {
         changePhaseDiff();  
         angle_ = computing_getRotationAngle(counter_);
         velocity_ = computing_getAngleVelocity(phaseDiffCounter_, (currentTime_ - lastTime_ ));
-        update_display(angle,velocity);
+        update_displayBuffer(angle_, velocity_);
         lastTime_ = currentTime_;
     }
         previousPhase_ = currentPhase_;
 }
 
 void outPut() {
-    update_display(angle_, velocity_);
+    update_display();
     update_gpioOutput(counter_, state_);
-}
-
-
-void setErrorState() {
-    gpioOutput_toggleErrorLed(); // error led an
-    while (!gpioInput_S6Pressed()) {
-    }
-    void gpioOutput_toggleErrorLed(); // error led aus
-    reset();
 }
 
 void reset() {
@@ -86,6 +84,7 @@ void reset() {
     phaseCounter_ = 0;
     lastPhaseCounter_ = 0;
     phaseDiffCounter_ = 0;
+    state_ = Idle;
 }
 
 void countSteps() {

@@ -15,9 +15,7 @@ Phase gpioInput_getPhase(void);
 
 bool gpioInput_S6Pressed(void);
 
-void update_gpioOutput(int counter, FsmState state);
-
-void gpioOutput_toggleErrorLed();
+void update_gpioOutput(uint8_t counter, FsmState state);
 
 #endif
 // EOF

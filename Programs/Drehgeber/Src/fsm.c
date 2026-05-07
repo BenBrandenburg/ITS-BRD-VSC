@@ -42,12 +42,15 @@ void fsm_run() {
         outPut();
     }
 }
-
+/*
+holt die neuesten daten und speichert sie ab
+*/
 void getInput() {
     currentPhase_ = gpioInput_getPhase();
     currentTime_ = getTime();
     s6Pressed_ = gpioInput_S6Pressed();
 }
+
 
 void changeState() {
     if (state_ == Error) return;
@@ -86,7 +89,8 @@ void reset() {
     phaseDiffCounter_ = 0;
     state_ = Idle;
 }
-
+/* 
+*/
 void countSteps() {
     if (state_ == Forward) {
         if (counter_ == INT_MAX) {
@@ -107,7 +111,9 @@ void countSteps() {
 }
 
 
-// berechnet die differrenz zwischen dem alten phasencounterr mit dem neuem phasencounter
+/*
+berechnet die differrenz zwischen dem alten phasencounterr mit dem neuem phasencounter
+*/
 void changePhaseDiff (){
     phaseDiffCounter_ = phaseCounter_ - lastPhaseCounter_;
     lastPhaseCounter_ = phaseCounter_; 

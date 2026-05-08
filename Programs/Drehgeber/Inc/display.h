@@ -3,16 +3,9 @@
 
 
 
-
-
-
-
 void startDisplay();
-void update_display(double winkel ,double velocity);
-void convertVelocity (double velocity );
-void convertAngle (double angle);
-
-
+void update_displayBuffer(double winkel ,double velocity);
+void update_display();
 
 #endif
 // EOF

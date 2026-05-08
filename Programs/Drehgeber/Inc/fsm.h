@@ -6,15 +6,5 @@
 
 void fsm_run();
 
-static void getInput();
-static void changeState();
-static void processInput();
-static void outPut();
-
-static void setErrorState();
-static void reset();
-static void countSteps();
-static void changePhaseDiff();
-
 #endif 
 // EOF

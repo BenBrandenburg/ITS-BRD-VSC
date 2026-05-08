@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "fsmStates.h"
+#include <stdint.h>
 
 typedef enum {
     PHASE_A = 0, // 00 

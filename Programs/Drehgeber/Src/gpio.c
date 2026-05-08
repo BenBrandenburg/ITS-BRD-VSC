@@ -1,4 +1,4 @@
-#include "gpioInput.h"
+#include "gpio.h"
 #include "stm32f4xx.h"
 
 #define LED_FORWARD 7 
@@ -19,7 +19,7 @@ bool gpioInput_S6Pressed(void) {
     return !(GPIOF->IDR & (1 << 6)); // s6 ist 6tes bit von gpiof
 }
 
-void gpioOutput_update(uint8_t counter, FsmState state) {
+void update_gpioOutput(uint8_t counter, FsmState state) {
     if (state == Idle) return;
     if (lastState_ != state) {
         GPIOE->BSRR = (0xff << 16); // resette alle state leds
@@ -32,9 +32,10 @@ void gpioOutput_update(uint8_t counter, FsmState state) {
                 GPIOE->BSRR = (1 << LED_REVERSE);
                 break;
             case Error:
-                GPIOE->BSSR = (1 << 13); // 14tes bit togglen
+                GPIOE->BSRR = (1 << LED_ERROR);
                 break;
             default:
+                break;
         }
     }
 

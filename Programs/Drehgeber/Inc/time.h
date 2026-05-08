@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-void initTimer();
+void initTime();
 uint32_t getTime();
 double getDt(uint32_t t2, uint32_t t1);
 

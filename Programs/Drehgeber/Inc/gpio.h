@@ -12,10 +12,14 @@ typedef enum {
     PHASE_C = 3  // 11
 } Phase;
 
+
+// returns the encoder input as a Phase
 Phase gpioInput_getPhase(void);
 
+// checks if reset button is pressed
 bool gpioInput_S6Pressed(void);
 
+// updates all output leds depending on state of fsm
 void update_gpioOutput(uint8_t counter, FsmState state);
 
 #endif

@@ -4,10 +4,11 @@
 
 #define SLOTS 300
 
-
+// calculate the rotational angle from counter for a 300 slots encoder
 double computing_getRotationAngle(int counter);
-double computing_getAngleVelocity(int diffBetweenPhases, uint32_t dt);
 
+// calculate the angular velocity from difference between phases and delta time
+double computing_getAngleVelocity(int diffBetweenPhases, uint32_t dt);
 
 #endif 
 // EOF

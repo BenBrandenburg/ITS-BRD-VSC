@@ -1,4 +1,5 @@
 #include <stdint.h>
+
 // berechnet den winkel 
 double computing_getRotationAngle(int counter){
     double angle = counter * 0.3;
@@ -6,11 +7,8 @@ double computing_getRotationAngle(int counter){
 }
 
 // berechnet die winkel geschwindigkeit
-double computing_getAngleVelocity(int diffBetweenPhases, uint32_t dt){
-    double t_in_sec = (double) dt / 90000000; 
-    double velocity = (diffBetweenPhases * 0.3 ) / t_in_sec;
+double computing_getAngleVelocity(int diffBetweenPhases, double dt){ 
+    double velocity = (diffBetweenPhases * 0.3 ) / dt;
     return velocity;
-    
 }
-
-
+// EOF

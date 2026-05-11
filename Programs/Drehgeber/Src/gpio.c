@@ -4,6 +4,7 @@
 #define LED_FORWARD 7 
 #define LED_REVERSE 6
 #define LED_ERROR 5
+#define LED_OSC 3
 
 static FsmState lastState_;
 
@@ -45,4 +46,12 @@ void update_gpioOutput(uint8_t counter, FsmState state) {
     GPIOD->BSRR = counter; // counter leds an schalten
 
     lastState_ = state;
+}
+
+void ledD20_high() {
+    GPIOE->BSRR = (1 << LED_OSC);
+}
+
+void ledD20_low() {
+    GPIOE->BSRR = (1 << (LED_OSC + 16));
 }

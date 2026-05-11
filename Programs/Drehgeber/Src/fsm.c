@@ -88,8 +88,10 @@ void processInput() {
 }
 
 void outPut() {
+    ledD20_high();
     update_display();
     update_gpioOutput(counter_, state_);
+    ledD20_low();
 }
 
 void reset() {
